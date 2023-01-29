@@ -4,15 +4,11 @@
 A simple weather app that allows you to search for a city. Once a user searches for a city, the user is the presented with the current and future conditions for that city and it is stored in the localstorage and added to the search history. The app displays a 5-day forecast for the user planning of the week.
 
 ## User Story
-
-```md
 AS A traveler
 I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 
 ## Acceptance Criteria
-
-```md
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
 THEN I am presented with current and future conditions for that city and that city is added to the search history
@@ -25,8 +21,6 @@ THEN I am again presented with current and future conditions for that city
 
 
 ## App Mock-Up
-
-```md
 ![This is a mock-up of the live Application](./Assets/images/127.0.0.1_5500_%20(1).png)
 
 
