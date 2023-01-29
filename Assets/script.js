@@ -7,6 +7,9 @@ let currentWind = document.getElementById("wind-speed");
 let currentHumidity = document.getElementById("humidity");
 let currentIconEl = document.getElementById("current-pic");
 let fiveday = document.getElementById("fiveday-header");
+let history = document.getElementById("history")
+
+let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
 let APIKey = "84b79da5e5d7c92085660485702f4ce8";
 
@@ -84,9 +87,29 @@ function theWeather(cityName) {
 }
 
 
-
 function k2f(K) {
     return Math.floor((K - 273.15) * 1.8 + 32);
+}
+
+
+function renderSearchHistory() {
+    history.innerHTML = "";
+    for (let i = 0; i < searchHistory.length; i++) {
+        let historyItem = document.createElement("input");
+        historyItem.setAttribute("type", "text");
+        historyItem.setAttribute("readonly", true);
+        historyItem.setAttribute("class", "form-control d-block bg-white");
+        historyItem.setAttribute("value", searchHistory[i]);
+        historyItem.addEventListener("click", function () {
+            theWeather(historyItem.value);
+        })
+        history.append(historyItem);
+    }
+}
+
+renderSearchHistory();
+if (searchHistory.length > 0) {
+    getWeather(searchHistory[searchHistory.length - 1]);
 }
 
 
@@ -94,5 +117,6 @@ searchBtn.addEventListener("click", function () {
     let citySearch = city.value;
     theWeather(citySearch);
     searchHistory.push(citySearch);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
 
 })
