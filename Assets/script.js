@@ -31,11 +31,13 @@ function theWeather(cityName) {
             currentIconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
             currentIconEl.setAttribute("alt", response.data.weather[0].description);
 
-            currentTemp.innerHTML = "Temperature: " + k2f(response.data.main.temp) + " &#176F";
+            currentTemp.innerHTML = "Temp: " + k2f(response.data.main.temp) + " &#176F";
 
             currentWind.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
 
             currentHumidity.innerHTML = "Humidity: " + response.data.main.humidity + "%";
+            
+            console.log(currentWind)
 
 
 
@@ -124,6 +126,6 @@ function renderSearchHistory() {
 
 renderSearchHistory();
 if (searchHistory.length > 0) {
-    getWeather(searchHistory[searchHistory.length - 1]);
+    theWeather(searchHistory[searchHistory.length - 1]);
 }
 
