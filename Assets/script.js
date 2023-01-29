@@ -86,6 +86,14 @@ function theWeather(cityName) {
 
 }
 
+searchBtn.addEventListener("click", function () {
+    let citySearch = city.value;
+    theWeather(citySearch);
+    searchHistory.push(citySearch);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+    renderSearchHistory();
+})
+
 
 function k2f(K) {
     return Math.floor((K - 273.15) * 1.8 + 32);
@@ -112,11 +120,7 @@ if (searchHistory.length > 0) {
     getWeather(searchHistory[searchHistory.length - 1]);
 }
 
+  
 
-searchBtn.addEventListener("click", function () {
-    let citySearch = city.value;
-    theWeather(citySearch);
-    searchHistory.push(citySearch);
-    localStorage.setItem("search", JSON.stringify(searchHistory));
 
-})
+
