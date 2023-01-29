@@ -7,7 +7,8 @@ let currentWind = document.getElementById("wind-speed");
 let currentHumidity = document.getElementById("humidity");
 let currentIconEl = document.getElementById("current-pic");
 let fiveday = document.getElementById("fiveday-header");
-let history = document.getElementById("history")
+let history = document.getElementById("history");
+let clearHistory = document.getElementById("clear-history");
 
 let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
@@ -94,6 +95,12 @@ searchBtn.addEventListener("click", function () {
     renderSearchHistory();
 })
 
+clearHistory.addEventListener("click", function () {
+    localStorage.clear();
+    searchHistory = [];
+    renderSearchHistory();
+})
+
 
 function k2f(K) {
     return Math.floor((K - 273.15) * 1.8 + 32);
@@ -119,8 +126,4 @@ renderSearchHistory();
 if (searchHistory.length > 0) {
     getWeather(searchHistory[searchHistory.length - 1]);
 }
-
-  
-
-
 
